@@ -1,0 +1,32 @@
+_format_version: "3.0"
+services:
+- host: api.kong-air.com
+  id: a82ccb5e-2962-532e-93e9-7c72f74ad530
+  name: notification-service
+  path: /
+  plugins: []
+  port: 443
+  protocol: https
+  routes:
+  - id: c9d3c4d1-9a8d-5126-8630-7df969fbd517
+    methods:
+    - POST
+    name: notification-service_notifications-email_send-email-notification
+    paths:
+    - ~/notifications/email$
+    plugins: []
+    regex_priority: 200
+    strip_path: false
+    tags: []
+  - id: f4621cda-b07a-5f81-a4f9-5eb4a72ff9b7
+    methods:
+    - POST
+    name: notification-service_notifications-sms_send-sms-notification
+    paths:
+    - ~/notifications/sms$
+    plugins: []
+    regex_priority: 200
+    strip_path: false
+    tags: []
+  tags: []
+upstreams: []
